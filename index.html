@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Waveform | The MKBHD Podcast</title>
+  <meta name="description" content="A tech podcast for gadget lovers and tech heads from the mind of Marques Brownlee. Deep dives into the latest in tech, consumer electronics, and what deserves your hard-earned cash." />
+  <meta name="keywords" content="Waveform, MKBHD, Marques Brownlee, Andrew Manganelli, David Imel, Tech Podcast, Gadgets, Technology, Consumer Electronics" />
+  <meta name="author" content="EL-KABOOS" />
+  <link rel="shortcut icon" href="./assets/Waveform.jpg">
+  <link rel="stylesheet" href="base.css">
+  <!-- Ionicons -->
+  <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.esm.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body class="before-load">
+    <div class="loading">
+      <div class="shutter-top"></div>
+      <div class="shutter-bottom"></div>
+      <div class="loading-content">
+        <div class="load-counter"></div>
+        <div class="load-bar-container">
+            <div class="load-bar"></div>
+        </div>
+        <div class="load-status">INITIALIZING SYSTEM: WAVEFORM PODCAST</div>
+      </div>
+    </div>
+
+    <canvas id="grid-bg"></canvas>
+    
+    <span class="bbg"></span>
+    <div class="tv-wrapper menu-toggle-btn">
+      <div id="window" class="tv-window hover-zone">
+        <div class="vhs-effect">
+          <div class="RCLOGO" alt="Logo"></div>
+          <div class="RCTXT">Waveform</div>
+          <div class="vhs-scanlines"></div>
+          <div class="tv-static"></div>
+        </div>
+      </div>
+    </div>
+    <!--CIRCLES-->
+    <div class="pulse-circles">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+    </div>
+    <div class="menu-overlay">
+      <div class="menu-bg"></div>
+      <div id="menublur"></div>
+      <div class="menu-overlay-nav">
+        <div class="close-btn">
+          <div class="close-btn-bar"></div>
+          <div class="close-btn-bar"></div>
+        </div>
+        <div class="menu-overlay-items">
+          <a href="https://www.youtube.com/@Waveform" target="_blank"><ion-icon name="logo-youtube"></ion-icon></a>
+          <a href="https://www.instagram.com/waveformpodcast" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
+          <a href="https://x.com/WVFRM" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a>
+        </div>
+      </div>
+      <div class="menu-overlay-footer">
+        <p>WAVEFORM &copy; 2025 All Rights Reserved</p>
+        <div class="menu-overlay-items">
+          <a href="#"><span class="menubg"></span>Cookie Settings</a>
+          <a href="#"><span class="menubg"></span>Privay Policy</a>
+          <a href="#"><span class="menubg"></span>Legal Disclaimer</a>
+        </div>
+      </div>
+      <div class="circular-menu">
+        <div class="joystick">
+          <img src="./assets/Waveform.png" class="center-icon center-main" alt="Waveform">
+          <ion-icon name="chevron-up-sharp" class="center-icon center-up"></ion-icon>
+          <ion-icon name="chevron-down-sharp" class="center-icon center-down"></ion-icon>
+          <ion-icon name="chevron-back-sharp" class="center-icon center-left"></ion-icon>
+          <ion-icon name="chevron-forward-sharp" class="center-icon center-right"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+	  <div class="logo-glitch-wrapper">
+      <img src="./assets/AF.png" class="logo-base" alt="Logo">
+      <!--<img src="./assets/RCMRQW.png" class="logo-base MQB" alt="Logo">-->
+    </div>
+    
+    <section class="hero">
+      <div class="marqueecontainer fade-sides">
+        <div class="marqueecontent">
+          <span>•</span>
+          <span class="RC">Waveform</span>
+          <span>•</span>
+          <span>A tech podcast for gadget lovers from the mind of MKBHD</span>
+          <span>•</span>
+          <span class="RC">Waveform</span>
+          <span>•</span>
+          <span>A tech podcast for gadget lovers from the mind of MKBHD</span>
+          <span>•</span>
+          <span class="RC">Waveform</span>
+          <span>•</span>
+          <span>A tech podcast for gadget lovers from the mind of MKBHD</span>
+          <span>•</span>
+          <span class="RC">Waveform</span>
+          <span>•</span>
+          <span>A tech podcast for gadget lovers from the mind of MKBHD</span>
+        </div>
+      </div>
+      <div class="hero-bg">
+        <h1 class="hero-title htu">
+          Waveform
+        </h1>
+        <div class="hero-img">
+          <img src="./assets/mb.png">
+          <div class="marqueecontainerII">
+            <div class="marqueecontentII">
+              <span>Waveform •&nbsp;</span>
+              <span>A tech podcast for gadget lovers by Mkbhd, Andrew Manganelli & David Imel •&nbsp;</span>
+              <span>Waveform •&nbsp;</span>
+              <span>A tech podcast for gadget lovers by Mkbhd, Andrew Manganelli & David Imel •&nbsp;</span>
+              <span>Waveform •&nbsp;</span>
+              <span>A tech podcast for gadget lovers by Mkbhd, Andrew Manganelli & David Imel •&nbsp;</span>
+              <span>Waveform •&nbsp;</span>
+              <span>A tech podcast for gadget lovers by Mkbhd, Andrew Manganelli & David Imel •&nbsp;</span>
+            </div>
+          </div>
+        </div>
+        <h1 class="hero-title">
+          Waveform <span class="hdr">Podcast.</span>
+        </h1>
+        <div class="mini">Designed By elKaboos © 2026</div>
+      </div>
+    </section>
+    
+    <!-- SUBSYSTEM 05: PERFORMANCE TIMELINE -->
+    <section class="subsystem-stage sys-timeline" data-subsystem="05/MISSION_LOG">
+      <div class="timeline-spine">
+        <div class="timeline-progress-bar"></div>
+      </div>
+      
+      <div class="timeline-nodes-container">
+        <div class="timeline-block left" data-year="LAUNCH">
+          <div class="log-tag">PODCAST LAUNCH</div>
+        </div>
+        <div class="timeline-block right" data-year="TECH_TALK">
+          <div class="log-tag">TECH NEWS DEEP DIVES</div>
+        </div>
+        <div class="timeline-block left" data-year="REVIEWS">
+          <div class="log-tag">GADGET ANALYTICS</div>
+        </div>
+        <div class="timeline-block right" data-year="GUESTS">
+          <div class="log-tag">INDUSTRY LEADER INTERVIEWS</div>
+        </div>
+        <div class="timeline-block left" data-year="MOBILE">
+          <div class="log-tag">SMARTPHONE ECOSYSTEM</div>
+        </div>
+        <div class="timeline-block right" data-year="FUTURE">
+          <div class="log-tag">FUTURE TECH HORIZONS</div>
+        </div>
+        <div class="timeline-block left" data-year="COMMUNITY">
+          <div class="log-tag">WAVEFORM COMMUNITY HUB</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="transmission-section">
+      <!--
+      <div class="transmission-header">
+        <span class="dot"></span>
+        <p>AUTO FOCUS ECOSYSTEM</p>
+      </div>
+      -->
+      <div class="transmission-grid">
+        <!-- TECH ANALYSIS -->
+        <div class="trans-card">
+          <div class="trans-noise"></div>
+          <span class="trans-id">01 / TECH ANALYSIS</span>
+          <div class="cardmarqueecontainer">
+            <div class="cardmarqueecontent">
+              <span>•</span>
+              <span class="OR">GADGET REVIEWS</span>
+              <span>•</span>
+              <span>TECH INDUSTRY NEWS</span>
+              <span>•</span>
+              <span class="OR">GADGET REVIEWS</span>
+              <span>•</span>
+              <span>TECH INDUSTRY NEWS</span>
+              <span>•</span>
+              <span class="OR">GADGET REVIEWS</span>
+              <span>•</span>
+              <span>TECH INDUSTRY NEWS</span>
+              <span>•</span>
+              <span class="OR">GADGET REVIEWS</span>
+              <span>•</span>
+              <span>TECH INDUSTRY NEWS</span>
+            </div>
+          </div>
+          <div class="cardmarqueecontainerII">
+            <div class="cardmarqueecontentII">
+              <span>•</span>
+              <span>Smartphones, wearable tech, and consumer electronics</span>
+              <span>•</span>
+              <span>Deep dives into the latest hardware and software trends</span>
+              <span>•</span>
+              <span>Smartphones, wearable tech, and consumer electronics</span>
+              <span>•</span>
+              <span>Deep dives into the latest hardware and software trends</span>
+              <span>•</span>
+              <span>Smartphones, wearable tech, and consumer electronics</span>
+              <span>•</span>
+              <span>Deep dives into the latest hardware and software trends</span>
+              <span>•</span>
+              <span>Smartphones, wearable tech, and consumer electronics</span>
+              <span>•</span>
+              <span>Deep dives into the latest hardware and software trends</span>
+            </div>
+          </div>
+          <div class="trans-footer">
+            <span>GADGET REVIEWS</span>
+            <span>TECH INDUSTRY NEWS</span>
+          </div>
+        </div>
+    
+        <!-- CONTENT STREAM -->
+        <div class="trans-card active">
+          <div class="trans-noise"></div>
+          <span class="trans-id">02 / CONTENT STREAM</span>
+          <div class="cardmarqueecontainer">
+            <div class="cardmarqueecontent">
+              <span>•</span>
+              <span class="OR">MARQUES BROWNLEE</span>
+              <span>•</span>
+              <span>ANDREW MANGANELLI</span>
+              <span>•</span>
+              <span class="OR">MARQUES BROWNLEE</span>
+              <span>•</span>
+              <span>ANDREW MANGANELLI</span>
+              <span>•</span>
+              <span class="OR">MARQUES BROWNLEE</span>
+              <span>•</span>
+              <span>ANDREW MANGANELLI</span>
+              <span>•</span>
+              <span class="OR">MARQUES BROWNLEE</span>
+              <span>•</span>
+              <span>ANDREW MANGANELLI</span>
+            </div>
+          </div>
+          <div class="cardmarqueecontainerII">
+            <div class="cardmarqueecontentII">
+              <span>•</span>
+              <span>Weekly tech news and gadget analysis</span>
+              <span>•</span>
+              <span>Tech-centric storytelling by MKBHD, Andrew & David</span>
+              <span>•</span>
+              <span>Weekly tech news and gadget analysis</span>
+              <span>•</span>
+              <span>Tech-centric storytelling by MKBHD, Andrew & David</span>
+              <span>•</span>
+              <span>Weekly tech news and gadget analysis</span>
+              <span>•</span>
+              <span>Tech-centric storytelling by MKBHD, Andrew & David</span>
+              <span>•</span>
+              <span>Weekly tech news and gadget analysis</span>
+              <span>•</span>
+              <span>Tech-centric storytelling by MKBHD, Andrew & David</span>
+            </div>
+          </div>
+          <div class="trans-footer">
+            <span>MARQUES BROWNLEE</span>
+            <span>ANDREW MANGANELLI</span>
+          </div>
+        </div>
+    
+        <!-- PERFORMANCE -->
+        <div class="trans-card">
+          <div class="trans-noise"></div>
+          <span class="trans-id">03 / PERFORMANCE</span>
+          <div class="cardmarqueecontainer">
+            <div class="cardmarqueecontent">
+              <span>•</span>
+              <span class="OR">TECH PERFORMANCE</span>
+              <span>•</span>
+              <span>REAL-WORLD TESTING</span>
+              <span>•</span>
+              <span class="OR">TECH PERFORMANCE</span>
+              <span>•</span>
+              <span>REAL-WORLD TESTING</span>
+              <span>•</span>
+              <span class="OR">TECH PERFORMANCE</span>
+              <span>•</span>
+              <span>REAL-WORLD TESTING</span>
+              <span>•</span>
+              <span class="OR">TECH PERFORMANCE</span>
+              <span>•</span>
+              <span>REAL-WORLD TESTING</span>
+            </div>
+          </div>
+          <div class="cardmarqueecontainerII">
+            <div class="cardmarqueecontentII">
+              <span>•</span>
+              <span>Testing benchmarks, hardware speeds, and software efficiency</span>
+              <span>•</span>
+              <span>Every product put to the test in the real world</span>
+              <span>•</span>
+              <span>Testing benchmarks, hardware speeds, and software efficiency</span>
+              <span>•</span>
+              <span>Every product put to the test in the real world</span>
+              <span>•</span>
+              <span>Testing benchmarks, hardware speeds, and software efficiency</span>
+              <span>•</span>
+              <span>Every product put to the test in the real world</span>
+              <span>•</span>
+              <span>Testing benchmarks, hardware speeds, and software efficiency</span>
+              <span>•</span>
+              <span>Every product put to the test in the real world</span>
+            </div>
+          </div>
+          <div class="trans-footer">
+            <span>TECH PERFORMANCE</span>
+            <span>REAL-WORLD TESTING</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUBSYSTEM 07: CINEMATIC STATEMENT -->
+    <section class="subsystem-stage sys-statement" data-subsystem="07/EMOTION_STREAM">
+      <div class="statement-canvas">
+        
+        <div class="statement-frame" id="msg-1">
+          <h2>GADGETS ARE NOT<br>
+            <span class="strike-container">
+              <span class="outlined">JUST PLASTIC</span>
+              <span class="strike-line"></span>
+            </span>
+          </h2>
+        </div>
+        
+        <div class="statement-frame" id="msg-2">
+          <h2>THEY ARE<br>
+            <span class="strike-container">
+              <span class="outlined">COMPUTING POWER</span>
+              <span class="strike-line"></span>
+            </span>
+          </h2>
+        </div>
+        
+        <div class="statement-frame" id="msg-3">
+          <h2>THEY ARE<br>
+            <span class="strike-container">
+              <span class="outlined">THE FUTURE CONNECTED</span>
+              <span class="strike-line"></span>
+            </span>
+          </h2>
+        </div>
+        
+        <div class="statement-frame" id="msg-4">
+          <h2>THEY ARE<br>
+            <span class="strike-container">
+              <span class="accent">Waveform</span>
+              <span class="strike-line"></span>
+            </span>
+          </h2>
+        </div>
+        
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <div class="quote-wrap">
+
+        <div class="references fade-sides">
+          <div class="track">
+            <div class="ref"><img src="./assets/brands/apple.png" alt="Apple"></div>
+            <div class="ref"><img src="./assets/brands/google.png" alt="Google"></div>
+            <div class="ref"><img src="./assets/brands/samsung.png" alt="Samsung"></div>
+            <div class="ref"><img src="./assets/brands/nvidia.png" alt="Nvidia"></div>
+            <div class="ref"><img src="./assets/brands/dbrand.svg" alt="dbrand"></div>
+            <div class="ref"><img src="./assets/brands/sony.png" alt="Sony"></div>
+            <div class="ref"><img src="./assets/brands/sonos.png" alt="Sonos"></div>
+            <div class="ref"><img src="./assets/brands/nintendo.png" alt="Brilliant"></div>
+            <div class="ref"><img src="./assets/brands/squarespace.png" alt="Squarespace"></div>
+            <div class="ref"><img src="./assets/brands/shopify.png" alt="Shopify"></div>
+          </div>
+        </div>
+        
+        <div class="quote-author">
+          <div class="quote-signa">
+            <div class="signaone">
+              <span class="hdr">Waveform</span>
+              <p class="square-paragraph">
+                WAVEFORM IS THE DEFINITIVE TECH-CENTRIC PODCAST CREATED BY MARQUES BROWNLEE, ANDREW MANGANELLI, AND DAVID IMEL. BEYOND JUST GADGET SPECS AND DESIGNS, WE EXPLORE THE "TECH-STACK" OF THE MODERN DIGITAL LANDSCAPE. FROM SMARTPHONE UI/UX INTEGRATION, CUTTING-EDGE COMPUTING CAPABILITIES, AND INNOVATIVE TECH ECOSYSTEMS TO RIGOROUS REAL-WORLD USAGE, WE BREAK DOWN WHAT IT ACTUALLY MEANS TO LIVE WITH THE LATEST CONSUMER ELECTRONICS. EVERY EPISODE IS DESIGNED TO BE A DEEP DIVE INTO THE FUTURE OF TECH, BLENDING INFORMED INDUSTRY PERSPECTIVES WITH ENTERTAINING ANALYTICAL DISCUSSION. WHETHER IT'S A NEW HARDWARE RELEASE OR A REVOLUTIONARY SOFTWARE UPDATE, WE CAPTURE THE RAW ESSENCE OF THE TECH INDUSTRY IN THE MODERN ERA. EACH EPISODE TREATS EVERY GADGET AS A PIECE OF INNOVATION, WHERE SOFTWARE, PERFORMANCE, AND DESIGN EXIST TOGETHER IN A WORLD BUILT FOR TECH HEADS WHO DEMAND BOTH PRECISION AND AESTHETICS. WE EXPLORE THE CUTTING-EDGE MACHINES, REVOLUTIONARY FEATURES, AND THE EVOLVING CULTURE SURROUNDING MODERN DIGITAL LIFESTYLES. EVERYTHING WE DO IS CRAFTED TO PROVIDE DEPTH, CLARITY, AND INTENSITY, TURNING EVERY EPISODE INTO A DIGITAL DRIVE THROUGH THE FUTURE OF THE INDUSTRY.
+              </p>
+            </div>
+            <div class="signathree">
+              <span class="ql"><a href="https://www.youtube.com/@Waveform" target="_blank"><span class="menubg"></span>YouTube</a></span>
+              <span class="ql"><a href="https://www.instagram.com/waveformpodcast" target="_blank"><span class="menubg"></span>Instagram</a></span>
+              <span class="ql"><a href="https://x.com/WVFRM" target="_blank"><span class="menubg"></span>X</a></span>
+            </div>
+          </div>
+          <div class="quote-code">
+            <video autoplay muted loop playsinline>
+              <!-- Ensure your video file path reflects the new Auto Focus content -->
+              <source src="./assets/WF.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <svg class="max-txt" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <filter id="HoverDistort">
+          <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" seed="2" stitchTiles="stitch" result="turb">
+            <animate attributeName="seed" from="2" to="50" dur="5s" repeatCount="indefinite" />
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="turb" scale="10" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <filter id="HoverDistort-max">
+          <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" seed="2" stitchTiles="stitch" result="turb">
+            <animate attributeName="seed" from="2" to="50" dur="5s" repeatCount="indefinite" />
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="turb" scale="33" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+    </svg>
+
+  
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script type="module" src="main.js" defer></script>
+    <script src="./menu.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/script.js"></script>
+    <script src="js/index.cad48f07.js"></script>
+  
+    <script src="https://unpkg.com/gsap@3.12.2/dist/gsap.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  </body>
+</html>
