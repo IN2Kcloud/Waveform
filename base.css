@@ -57,6 +57,7 @@ a:hover, a:focus { color: #000; outline: none; }
 .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255,255,255,.08), transparent 20%); pointer-events: none; mix-blend-mode: screen; } /* Hero light overlay */
 @media screen and (max-width:2000px) {.hero-title{top: 75%; height: 66vh;font-size: 15rem;} .hero-title span{top: 33%; font-size: clamp(5rem,10rem,15rem);} .mc{font-size: 12rem;} .mt{font-size: 12rem;} .hero-img {width: 37vw;} }
 @media screen and (max-width:1000px) {.marqueecontent span {font-size: 5rem;} .hero-title{font-size:4.4rem;top: 70%;line-height: 1.5;}.hero-title span{top: 15%;font-size: 4rem;} .hero-img {width: 150vw;} .marqueecontainerII {width: 30vw;} .marqueecontentII span{font-size: 1.5rem;}}
+@media (max-width: 550px) and (max-height: 800px) {.hero-img {width: 120vw;} .marqueecontainerII {left: 35%;}.marqueecontentII span{font-size: 1rem;} }
 
 /* ================= SUBSYSTEM 05: FUTURISTIC MISSION LOG ================= */
 /* SYSTEM INTERFACE STRUCTURE */
@@ -211,6 +212,10 @@ a:hover, a:focus { color: #000; outline: none; }
   .square-paragraph {padding: 0rem;}
   .signaone span {font-size: 6rem;}
   .quote-code { width: 100%; }
+}
+@media (max-width: 550px) and (max-height: 800px) {
+  .quote-section { margin-bottom: 33vh;}
+  .quote-signa { height: 133vh; }
 }
 
 /* TV WINDOW */
