@@ -4,9 +4,9 @@ const audioOpen = new Audio("./public/menu-open.mp3");
 const audioClose = new Audio("./public/menu-close.mp3");
 
 // lower volume
-audioSelect.volume = 0.9;
-audioOpen.volume = 0.9;
-audioClose.volume = 0.9;
+audioSelect.volume = 0.3;
+audioOpen.volume = 0.3;
+audioClose.volume = 0.3;
 
 // Optimization: Play sound from memory instantly, BUT only if not on mobile
 function playSound(audio) {
