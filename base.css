@@ -41,9 +41,20 @@ a:hover, a:focus { color: #000; outline: none; }
 .hero-img img {position: relative;width: 100%; pointer-events: none;}
 .marqueecontainerII {position: absolute; left: 47%; top: 18%; transform: translate(-50%, -50%) rotate(-10deg);width: 10vw;overflow: hidden;background: transparent; /* Or a color to test visibility */filter: drop-shadow(0px 0px 15px #EA4335);mix-blend-mode: screen;}
 .marqueecontentII {display: flex;flex-direction: row;flex-wrap: nowrap;white-space: nowrap;will-change: transform; /* Helps GSAP performance */}
-.marqueecontentII span {/*filter:url(#text-distortion);*/display: block;/* padding: 0 40px; Space between items */font-size: 2rem; /* Make it big so you can't miss it */color: #000;background-color: #EA4335; flex-shrink: 0; /* Prevents the items from squishing to 0 width */ font-family: 'Barett Street', 'LEMONMILK-bold', 'Roboto', sans-serif; letter-spacing: 0rem; pointer-events: none;user-select: none; -webkit-user-select: none;/* Safari */ -moz-user-select: none;/* Firefox */ -ms-user-select: none;/* IE/Edge */ }
+.marqueecontentII span {display: block;font-size: 2rem;color: #000;background-color: #EA4335; flex-shrink: 0; font-family: 'Barett Street', 'LEMONMILK-bold', 'Roboto', sans-serif; letter-spacing: 0rem; pointer-events: none;user-select: none; -webkit-user-select: none;/* Safari */ -moz-user-select: none;/* Firefox */ -ms-user-select: none;/* IE/Edge */ }
 .hero-sub { position: relative; max-width: 2000px; margin-top: 3rem; font-size: 2rem; font-weight: lighter; line-height: 1.8; color: #fff; } /* Hero paragraph */
 .hero-sub p { margin-bottom: 1.5rem; } /* Paragraph spacing */
+
+.screen-views { position: absolute;top:50%;left:50%;transform:translate(-50%, -50%); z-index: 11; width: 25%;aspect-ratio: 16/9;height: auto; background-color: #000; border: 2px solid white; filter: drop-shadow(0px 0px 5px #fff); display: flex;flex-direction: column;align-items: center;justify-content: center; cursor: pointer;pointer-events: all;}
+/* The "Power Off" */
+@keyframes tv-off { 0% { transform: scale(1, 1); filter: brightness(1) drop-shadow(0px 0px 5px #fff); opacity: 1; } 60% { transform: scale(1.3, 0.001); filter: brightness(10) drop-shadow(0px 0px 5px #fff); opacity: 1; } 100% { transform: scale(0, 0); filter: brightness(20) drop-shadow(0px 0px 5px #fff); opacity: 0; } }
+/* The "Power On" */
+@keyframes tv-on { 0% { transform: scale(0, 0); filter: brightness(20) drop-shadow(0px 0px 5px #fff); opacity: 0; } 40% { transform: scale(1.3, 0.001); filter: brightness(10) drop-shadow(0px 0px 5px #fff); opacity: 1; } 70% { transform: scale(1.1, 1.1); filter: brightness(1.5) drop-shadow(0px 0px 5px #fff); opacity: 1; } 100% { transform: scale(1, 1); filter: brightness(1) drop-shadow(0px 0px 5px #fff); opacity: 1; } }
+.screen-views { position: absolute; transition: left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),top 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),translate 0.2s ease-out;  overflow: hidden; }
+.screen-views.off { animation: tv-off 0.5s forwards; pointer-events: none; }
+.screen-views.on { animation: tv-on 0.5s forwards; }
+@media screen and (max-width:1000px){.screen-views{/*aspect-ratio: 9/16;*/width: 40%;}}
+
 /* =========================
    CINEMATIC INTRO OVERLAY
 ========================= */
@@ -169,6 +180,20 @@ a:hover, a:focus { color: #000; outline: none; }
   .strike-line { height: 5px; } /* Bigger background text */
 }
 
+/* ================= TERMINAL ================= */
+.terminal-section { width: 100%; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 10vh 5vw; } 
+.terminal-window { width: 100%; max-width: 1200px; border: 1px solid rgba(255, 255, 255, 0.5); backdrop-filter: blur(20px); overflow: hidden; box-shadow: 0 0 60px rgba(255, 255, 255, 0.1), inset 0 0 40px rgba(255, 255, 255, 0.1); }
+.terminal-top { height: 60px; border-bottom: 1px solid rgba(255, 255, 255, 0.5); display: flex; align-items: center; gap: 1rem; padding: 0 2rem; } 
+.terminal-top span { width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); } 
+.terminal-body { padding: 4rem; display: flex; flex-direction: column; gap: 2rem; } 
+.terminal-body p { color: #fff; font-family:'Ghore', 'LEMONMILK-bold', 'Roboto', sans-serif;font-size:3rem;letter-spacing:3px; opacity: 0.75; animation: terminalBlink 4s infinite; }
+.terminal-body p:nth-child(2) { animation-delay: 0.4s; }
+.terminal-body p:nth-child(3) { animation-delay: 0.8s; }
+.terminal-body p:nth-child(4) { animation-delay: 1.2s; } 
+.terminal-body p:nth-child(5) { animation-delay: 1.6s; } 
+@keyframes terminalBlink {0%,100% { opacity: 0.75; } 50% { opacity: 0.25; }}
+@media(max-width:1000px){.terminal-body p {font-size:1.8rem;}}
+
 /* ================= QUOTE SECTION ================= */
 .quote-section { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 10vw; position: relative; z-index: 5; } /* Fullscreen quote section */
 /* ================= QUOTE WRAPPER ================= */
@@ -181,7 +206,6 @@ a:hover, a:focus { color: #000; outline: none; }
 .ref:nth-child(even){transform: rotate(1.5deg);}
 .ref:hover{opacity:1;filter: none;transform: scale(1.1) rotate(0deg);}
 @media screen and (max-width:1000px) { }
-
 /* ================= QUOTE AUTHOR ================= */
 .quote-author { width: 100%; display: flex;justify-content: space-between;align-items: center; } /* Author name */
 .quote-signa {width: 75%;height: 20vh;display: flex;align-items: center;justify-content: center;}

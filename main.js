@@ -155,7 +155,7 @@ function draw() {
     // 2. Draw the Gradient
     const centerX = gridCanvas.width / 2 + Math.cos(time) * (gridCanvas.width * 0.3);
     const centerY = gridCanvas.height / 2 + Math.sin(time * 0.8) * (gridCanvas.height * 0.2);
-    const baseRadius = Math.max(gridCanvas.width, gridCanvas.height) * 5;
+    const baseRadius = Math.max(gridCanvas.width, gridCanvas.height) * 2;
     const pulseRadius = baseRadius + Math.sin(time * 0.5) * 100;
 
     const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, pulseRadius);
@@ -420,6 +420,236 @@ document.addEventListener("DOMContentLoaded", () => {
       vid.play().catch(err => console.log("Autoplay blocked", err));
     }, 500);
   });
+});
+
+// ========== SCREEN VIEWS ========== //
+
+const screen = document.querySelector('.screen-views');
+const video = screen.querySelector('video');
+const videoTimes = {};
+
+const videos = [
+  './assets/GeForce RTX 5060 Family GPUs _ Blackwell RTX for Every Gamer.mp4',
+  './assets/Google – Welcome to the Gemini era.mp4',
+  './assets/Introducing Apple Creator Studio.mp4',
+  './assets/Introducing the Ray-Ban Meta Smart Glasses Collection.mp4',
+  './assets/Ultra Unfolds _ Galaxy Z Fold7 _ Samsung.mp4'
+];
+
+let currentVideoIndex = 0;
+let baseRotation = 0;
+
+// --------------------------
+// VIDEO SWITCHER
+// --------------------------
+
+function changeVideo() {
+  if (!video || videos.length < 2) return;
+
+  // Save current playback position
+  videoTimes[videos[currentVideoIndex]] = video.currentTime;
+
+  let nextIndex;
+
+  do {
+    nextIndex = Math.floor(Math.random() * videos.length);
+  } while (nextIndex === currentVideoIndex);
+
+  currentVideoIndex = nextIndex;
+
+  const nextSrc = videos[currentVideoIndex];
+
+  video.pause();
+  video.src = nextSrc;
+  video.load();
+
+  video.addEventListener(
+    "loadedmetadata",
+    () => {
+      // Restore previous position if we have one
+      if (videoTimes[nextSrc] !== undefined) {
+        video.currentTime = videoTimes[nextSrc];
+      }
+
+      video.play().catch(() => {});
+    },
+    { once: true }
+  );
+}
+
+// --------------------------
+// MAGNET EFFECT
+// --------------------------
+
+document.addEventListener('mousemove', (e) => {
+  if (
+    screen.classList.contains('off') ||
+    !screen.classList.contains('on')
+  ) {
+    screen.style.translate = '0px 0px';
+    screen.style.transform =
+      'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    return;
+  }
+
+  const rect = screen.getBoundingClientRect();
+
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const distanceX = e.clientX - centerX;
+  const distanceY = e.clientY - centerY;
+
+  const distance = Math.hypot(distanceX, distanceY);
+
+  const magnetRadius = 400;
+
+  if (distance < magnetRadius) {
+    const strength = Math.pow(
+      1 - distance / magnetRadius,
+      2
+    );
+
+    const pullX = distanceX * strength * 0.5;
+    const pullY = distanceY * strength * 0.5;
+
+    const tiltX =
+      (distanceY / magnetRadius) *
+      strength *
+      -20;
+
+    const tiltY =
+      (distanceX / magnetRadius) *
+      strength *
+      20;
+
+    screen.style.translate = `${pullX}px ${pullY}px`;
+
+    screen.style.rotate =
+      `${baseRotation + pullX * 0.2}deg`;
+
+    screen.style.transform =
+      `perspective(1000px)
+       rotateX(${tiltX}deg)
+       rotateY(${tiltY}deg)`;
+  } else {
+    screen.style.translate = '0px 0px';
+
+    screen.style.rotate = `${baseRotation}deg`;
+
+    screen.style.transform =
+      'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+  }
+});
+
+// --------------------------
+// TELEPORT
+// --------------------------
+
+function teleportTV() {
+  screen.classList.remove('on');
+  screen.classList.add('off');
+
+  // change video halfway through shutdown
+  setTimeout(() => {
+    changeVideo();
+  }, 300);
+
+  setTimeout(() => {
+    const margin = 100;
+
+    const screenW = screen.offsetWidth;
+    const screenH = screen.offsetHeight;
+
+    const maxX = window.innerWidth - screenW - margin;
+    const maxY = window.innerHeight - screenH - margin;
+
+    // Define forbidden middle zone (40% → 60%)
+    const leftZoneMax = window.innerWidth * 0.40;
+    const rightZoneMin = window.innerWidth * 0.60;
+
+    let randomX;
+
+    // pick either left or right zone (clean + efficient)
+    if (Math.random() < 0.5) {
+      // LEFT ZONE
+      randomX = margin + Math.random() * (leftZoneMax - margin);
+    } else {
+      // RIGHT ZONE
+      randomX =
+        rightZoneMin +
+        Math.random() * (maxX - rightZoneMin);
+    }
+
+    const randomY = Math.max(
+      margin,
+      Math.random() * maxY
+    );
+
+    baseRotation = (Math.random() - 0.5) * 40;
+
+    screen.style.left = `${randomX}px`;
+    screen.style.top = `${randomY}px`;
+
+    screen.style.rotate = `${baseRotation}deg`;
+
+    screen.classList.remove('off');
+    screen.classList.add('on');
+  }, 600);
+}
+
+// --------------------------
+// AUTO PILOT
+// --------------------------
+
+function startAutoDrive() {
+  const randomDelay =
+    Math.random() * 5000 + 5000;
+
+  setTimeout(() => {
+    teleportTV();
+    startAutoDrive();
+  }, randomDelay);
+}
+
+// --------------------------
+// INIT
+// --------------------------
+
+screen.classList.add('on');
+
+if (video) {
+  video.play().catch(() => {});
+}
+
+startAutoDrive();
+
+screen.addEventListener('click', teleportTV);
+
+
+// ================= TERMINAL SIGNAL ================= //
+
+gsap.from(".terminal-window", {
+  scale: 0.92,
+  opacity: 0,
+  filter: "blur(10px)",
+  duration: 2,
+  ease: "expo.out",
+  scrollTrigger: {
+    trigger: ".terminal-section",
+    start: "top 75%"
+  }
+});
+
+
+// ================= LOW FREQUENCY FLOAT ================= //
+
+gsap.to(".terminal-window", {
+  y: 15,
+  duration: 4,
+  repeat: -1,
+  yoyo: true,
+  ease: "sine.inOut"
 });
 
 // ========== TV window magnet ========== //
