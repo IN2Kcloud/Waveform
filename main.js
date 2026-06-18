@@ -564,9 +564,9 @@ function teleportTV() {
     const maxX = window.innerWidth - screenW - margin;
     const maxY = window.innerHeight - screenH - margin;
 
-    // Define forbidden middle zone (40% → 60%)
-    const leftZoneMax = window.innerWidth * 0.40;
-    const rightZoneMin = window.innerWidth * 0.60;
+    // Define forbidden middle zone (33% → 66%)
+    const leftZoneMax = window.innerWidth * 0.33;
+    const rightZoneMin = window.innerWidth * 0.66;
 
     let randomX;
 
